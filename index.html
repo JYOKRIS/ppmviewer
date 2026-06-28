@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>PPM 同步檢視器</title>
+    <title>Chrome PPM Viewer</title>
     <style>
         body { font-family: -apple-system, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; text-align: center; }
         .container { max-width: 1000px; margin: 0 auto; }
@@ -32,19 +32,18 @@
 
 <div class="container">
     <div id="welcome-view">
-        <h1>PPM 實時硬碟監聽器</h1>
-        <p>點擊按鈕選取資料夾，當你在外部輸出/覆蓋 image.ppm時，網頁將<b>實時同步</p>
+        <h1>Chrome PPM Viewer</h1>
         <br>
-        <button class="btn" onclick="startWatching()">選取資料夾並開啟硬碟監聽</button>
+        <button class="btn" onclick="startWatching()">Choose Your File</button>
     </div>
 
     <div id="gallery-view">
         <div style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
-            <b id="count-info">已連線至本地硬碟...</b>
-            <div style="font-size: 13px; color: #34c759; font-weight: bold;">監聽中</div>
+            <b id="count-info">Connected...</b>
+            <div style="font-size: 13px; color: #34c759; font-weight: bold;">Listening</div>
             <div>
-                <button class="btn btn-sm" onclick="startWatching()">重新選取</button>
-                <button class="btn btn-sm" style="background:#666" onclick="location.reload()">中斷連線</button>
+                <button class="btn btn-sm" onclick="startWatching()">Rechoose</button>
+                <button class="btn btn-sm" style="background:#666" onclick="location.reload()">Disconnect</button>
             </div>
         </div>
         <div id="gallery"></div>
@@ -174,7 +173,7 @@ function renderPPM(file) {
                     badge = document.createElement('span');
                     badge.className = 'badge';
                     badge.id = `badge-${file.name}`;
-                    badge.textContent = '已更新';
+                    badge.textContent = 'Updated';
                     card.appendChild(badge);
 
                     canvas = document.createElement('canvas');
@@ -224,7 +223,7 @@ function renderPPM(file) {
                 };
 
             } catch (err) {
-                console.error(`解析失敗 ${file.name}:`, err);
+                console.error(`Failed ${file.name}:`, err);
             }
             resolve();
         };
